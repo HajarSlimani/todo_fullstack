@@ -1,0 +1,27 @@
+// Light theme
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border: rgba(0,0,0,0.1);
+  --primary: #667eea;
+  --primary-dark: #5a67d8;
+}
+
+// Dark theme
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --border: rgba(255,255,255,0.1);
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}

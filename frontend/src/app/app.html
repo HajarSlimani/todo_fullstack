@@ -1,0 +1,48 @@
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>Mes Tâches</h1>
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </header>
+
+  <!-- Ajout -->
+  <section class="add-todo">
+    <input #input type="text" placeholder="Nouvelle tâche..." (keyup.enter)="addTodo(input.value); input.value=''">
+    <button mat-mini-fab color="primary" (click)="addTodo(input.value); input.value=''">
+      <mat-icon>add</mat-icon>
+    </button>
+  </section>
+
+  <!-- Chargement -->
+  @if (isLoading()) {
+    <div class="skeleton" animate.enter="fadeIn"></div>
+    <div class="skeleton" animate.enter="fadeIn"></div>
+    <div class="skeleton" animate.enter="fadeIn"></div>
+  }
+
+  <!-- Liste -->
+  @else {
+    <section class="todos">
+      @for (todo of todos(); track todo.id) {
+        <article class="todo-item" animate.enter="slideIn" animate.leave="slideOut">
+          <label class="checkbox">
+            <input type="checkbox" [checked]="todo.completed" (change)="toggle(todo)">
+            <span class="checkmark"></span>
+          </label>
+          <span [class.completed]="todo.completed">{{ todo.title }}</span>
+          <button mat-icon-button color="warn" (click)="delete(todo.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </article>
+      } @empty {
+        <div class="empty" animate.enter="fadeIn">
+          <mat-icon>check_circle</mat-icon>
+          <p>Aucune tâche ! Profite</p>
+        </div>
+      }
+    </section>
+  }
+</div>

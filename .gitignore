@@ -1,0 +1,19 @@
+# Backend (Spring Boot)
+target/
+*.log
+
+# IntelliJ / Eclipse
+.idea/
+*.iml
+.project
+.classpath
+
+# Frontend (Angular)
+node_modules/
+dist/
+.angular/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
