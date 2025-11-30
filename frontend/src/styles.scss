@@ -17,3 +17,27 @@ html, body { height: 100%; margin: 0; background: var(--bg, #f8fafc); transition
 }
 
 body { color: var(--text); background: var(--bg); }
+.stats {
+  margin: 12px 0 18px;
+  font-size: 16px;
+  color: var(--text-color, #444);
+  font-weight: 500;
+  opacity: 0.9;
+}
+.progress-container {
+  margin: 10px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  span {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.85;
+  }
+
+  mat-progress-bar {
+    height: 8px;
+    border-radius: 4px;
+  }
+}

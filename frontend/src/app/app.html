@@ -7,6 +7,18 @@
       <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
   </header>
+ <div class="stats">
+  {{ completedTasks() }} complétées — 
+  {{ remainingTasks() }} restantes — 
+  {{ totalTasks() }} total
+</div>
+
+<div class="progress-container">
+  <span>Progression : {{ progress() }}%</span>
+  <mat-progress-bar mode="determinate" [value]="progress()"></mat-progress-bar>
+</div>
+
+
 
   <!-- Ajout -->
   <section class="add-todo">

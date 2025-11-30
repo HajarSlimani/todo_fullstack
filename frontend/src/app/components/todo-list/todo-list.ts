@@ -43,4 +43,5 @@ export class TodoList implements OnInit {
       this.todos = this.todos.filter(t => t.id !== todo.id);
     });
   }
+  
 }

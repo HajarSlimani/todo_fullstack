@@ -4,10 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { TodoService } from './services/todo.service';
 import { Todo } from './models/todo.model';
 import { MatButtonModule } from '@angular/material/button';
+import { computed } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatProgressBarModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -58,4 +60,22 @@ export class App {
   toggleTheme() {
     this.isDark.set(!this.isDark());
   }
+  
+  // Computed properties for task statistics
+  
+totalTasks = computed(() => this.todos().length);
+
+completedTasks = computed(() =>
+  this.todos().filter(t => t.completed).length
+);
+
+remainingTasks = computed(() =>
+  this.todos().filter(t => !t.completed).length
+);
+progress = computed(() => {
+  const total = this.totalTasks();
+  return total === 0 ? 0 : Math.round((this.completedTasks() / total) * 100);
+});
+
+
 }
